@@ -54,8 +54,17 @@
     <Compile Include="Avocado-ERPS-POS-INVOICE GENERATOR-LOGIN SCREEN.Designer.cs">
       <DependentUpon>Avocado-ERPS-POS-INVOICE GENERATOR-LOGIN SCREEN.cs</DependentUpon>
     </Compile>
+    <Compile Include="Avocado-ERPS-POS-INVOICE GENERATOR-INVOICE GENERATOR SCREEN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Avocado-ERPS-POS-INVOICE GENERATOR-INVOICE GENERATOR SCREEN.Designer.cs">
+      <DependentUpon>Avocado-ERPS-POS-INVOICE GENERATOR-INVOICE GENERATOR SCREEN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Avocado-ERPS-POS-INVOICE GENERATOR-INVOICE GENERATOR SCREEN.resx">
+      <DependentUpon>Avocado-ERPS-POS-INVOICE GENERATOR-INVOICE GENERATOR SCREEN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Avocado-ERPS-POS-INVOICE GENERATOR-LOGIN SCREEN.resx">
       <DependentUpon>Avocado-ERPS-POS-INVOICE GENERATOR-LOGIN SCREEN.cs</DependentUpon>
     </EmbeddedResource>

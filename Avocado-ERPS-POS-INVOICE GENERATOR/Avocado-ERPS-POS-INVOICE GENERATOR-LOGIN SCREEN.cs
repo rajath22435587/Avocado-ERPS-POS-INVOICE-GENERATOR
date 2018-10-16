@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using static Avocado_ERPS_POS_INVOICE_GENERATOR.DBclient;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -17,6 +18,8 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 {
     public partial class Form1 : MaterialForm
     {
+        DBclient Dbclient = new DBclient();
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +33,14 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
                 Primary.Blue500, Accent.LightBlue200,
                 TextShade.WHITE
                 );
+
+            if (Dbclient.CheckConnection())
+            {
+                Status_Lable_NonEdit.Text = "Online";
+            }
+            else Status_Lable_NonEdit.Text = "Offline";
         }
+
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -79,7 +89,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 
         private void materialLabel1_Click_1(object sender, EventArgs e)
         {
-
+            
         }
 
         private void materialLabel2_Click(object sender, EventArgs e)

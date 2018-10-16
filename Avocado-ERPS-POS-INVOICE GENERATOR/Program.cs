@@ -11,6 +11,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// Test commit
         [STAThread]
         static void Main()
         {

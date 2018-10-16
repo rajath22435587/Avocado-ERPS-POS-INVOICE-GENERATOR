@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 16, 2018 at 09:08 AM
+-- Generation Time: Oct 16, 2018 at 10:16 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `avacado`
 --
+CREATE DATABASE IF NOT EXISTS `avacado` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `avacado`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +30,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `login_credentials`
 --
 
-DROP TABLE IF EXISTS `login_credentials`;
 CREATE TABLE IF NOT EXISTS `login_credentials` (
   `Sl.No` int(8) NOT NULL,
   `Username` varchar(32) NOT NULL,

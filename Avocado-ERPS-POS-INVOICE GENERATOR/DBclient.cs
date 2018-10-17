@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,6 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";" + "SslMode=" + sslmode +";";
-
             connection = new MySqlConnection(connectionString);
         }
 
@@ -72,7 +72,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
         }
 
         //Close connection
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {
@@ -130,6 +130,28 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
         //Restore
         public void Restore()
         {
+        }
+
+        public void DoLogin(String username, String Password)
+        {
+            if (OpenConnection()) {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select * from login_credentials Where Username = '" + username.Trim() + "' and Password = '" + password.Trim() + "'";
+                cmd.ExecuteNonQuery();
+                DataTable dtbl = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dtbl);
+                if (dtbl.Rows.Count == 1)
+                {
+                    MessageBox.Show("Logged in");
+                }
+                else
+                {
+                    MessageBox.Show("Check your username and password");
+                }
+                CloseConnection();
+            }
         }
     }
 

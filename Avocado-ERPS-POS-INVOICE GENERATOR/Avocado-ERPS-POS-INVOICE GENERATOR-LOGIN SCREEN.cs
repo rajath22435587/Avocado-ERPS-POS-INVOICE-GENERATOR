@@ -39,6 +39,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
                 Status_Lable_NonEdit.Text = "Online";
             }
             else Status_Lable_NonEdit.Text = "Offline";
+            Dbclient.CloseConnection();
         }
 
 
@@ -79,7 +80,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 
         private void Login_Input_Button_Click(object sender, EventArgs e)
         {
-
+            Dbclient.DoLogin(Username_Input_TextField.Text, Password_Input_TextField.Text);
         }
 
         private void materialLabel1_Click(object sender, EventArgs e)

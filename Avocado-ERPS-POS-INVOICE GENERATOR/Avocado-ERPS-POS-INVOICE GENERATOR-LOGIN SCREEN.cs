@@ -18,8 +18,8 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 {
     public partial class Form1 : MaterialForm
     {
-        DBclient Dbclient = new DBclient();
 
+        DBclient DbClient = new DBclient();
         public Form1()
         {
             InitializeComponent();
@@ -33,15 +33,13 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
                 Primary.Blue500, Accent.LightBlue200,
                 TextShade.WHITE
                 );
-
-            if (Dbclient.CheckConnection())
+            if (DbClient.CheckConnection())
             {
                 Status_Lable_NonEdit.Text = "Online";
             }
             else Status_Lable_NonEdit.Text = "Offline";
-            Dbclient.CloseConnection();
+            DbClient.CloseConnection();
         }
-
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -80,7 +78,16 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 
         private void Login_Input_Button_Click(object sender, EventArgs e)
         {
-            Dbclient.DoLogin(Username_Input_TextField.Text, Password_Input_TextField.Text);
+
+            //MessageBox.Show(Password_Input_TextField.Text);
+            bool Status = DbClient.DoLogin(Username_Input_TextField.Text, Password_Input_TextField.Text);
+            if (Status == true)
+            {
+                this.Hide();
+                Form2 ss = new Form2();
+                ss.Show();
+
+            }
         }
 
         private void materialLabel1_Click(object sender, EventArgs e)
@@ -90,7 +97,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
 
         private void materialLabel1_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void materialLabel2_Click(object sender, EventArgs e)

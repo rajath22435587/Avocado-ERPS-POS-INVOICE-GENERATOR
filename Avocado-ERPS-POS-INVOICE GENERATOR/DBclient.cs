@@ -33,7 +33,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
             sslmode = "none";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";" + "SslMode=" + sslmode +";";
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";" + "SslMode=" + sslmode + ";";
             connection = new MySqlConnection(connectionString);
         }
 
@@ -132,26 +132,36 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
         {
         }
 
-        public void DoLogin(String username, String Password)
+        public bool DoLogin(string username, String Password)
         {
-            if (OpenConnection()) {
+            if (OpenConnection())
+            {
+                int i = 0;
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "Select * from login_credentials Where Username = '" + username.Trim() + "' and Password = '" + password.Trim() + "'";
+                cmd.CommandText = "Select * from login_credentials Where Username = '"+username +"' and Password = '"+Password+"'";
                 cmd.ExecuteNonQuery();
                 DataTable dtbl = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dtbl);
-                if (dtbl.Rows.Count == 1)
+                i = Convert.ToInt32(dtbl.Rows.Count.ToString());
+                  
+                if (i == 0)
                 {
-                    MessageBox.Show("Logged in");
+                    MessageBox.Show("Incorrect Password and Username");
+                    CloseConnection();
+                    return false;
                 }
                 else
                 {
-                    MessageBox.Show("Check your username and password");
+                    CloseConnection();
+                    return true;
                 }
-                CloseConnection();
+                
+                
             }
+            return false;
+
         }
     }
 

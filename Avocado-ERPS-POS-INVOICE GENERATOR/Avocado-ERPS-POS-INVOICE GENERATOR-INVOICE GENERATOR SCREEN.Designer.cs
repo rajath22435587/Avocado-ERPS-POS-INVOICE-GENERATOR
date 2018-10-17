@@ -40,6 +40,7 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
             this.ClientSize = new System.Drawing.Size(784, 661);
             this.Name = "Form2";
             this.Text = "Generate Invoice ";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 
         }

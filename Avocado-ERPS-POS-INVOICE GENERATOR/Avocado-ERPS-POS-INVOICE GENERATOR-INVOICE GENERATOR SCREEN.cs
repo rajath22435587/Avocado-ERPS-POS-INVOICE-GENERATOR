@@ -28,5 +28,10 @@ namespace Avocado_ERPS_POS_INVOICE_GENERATOR
                 TextShade.WHITE
                 );
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
